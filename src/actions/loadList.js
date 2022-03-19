@@ -1,6 +1,7 @@
 import { db } from "../firebase-config";
+import moment from 'moment';
 
-export const getList = async () => {
+export const getList = async() => {
 
     const notesSnap = await db.collection('osiris/list/notes').get()
     const notes = [];
@@ -10,8 +11,6 @@ export const getList = async () => {
             id: snapHijo.id,
             ...snapHijo.data()
         })
-    });
-
-
+    })
     return notes;
 }

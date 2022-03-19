@@ -19,13 +19,14 @@ const customStyles = {
 const initEvent = {
     titulo: '',
     contenido: '',
-    inicio: '',
+    inicio: new Date().toISOString().slice(0, 10),
     fin: '',
     completada: false
 }
 Modal.setAppElement('#root');
 
-export const AddNewFab = () => {
+export const AddNewFab = ({classValue}) => {
+    
 
     const [openModal, setOpenModal] = useState(false)
 
@@ -135,6 +136,7 @@ export const AddNewFab = () => {
                             name='fin'
                             value={fin}
                             onChange={handleInputChange}
+                            min={inicio}
                         />
                     </div>
 
@@ -152,7 +154,7 @@ export const AddNewFab = () => {
                 <button className="icon bg-info text-white" onClick={handleOpenModal}>
                     <i className="fa-solid fa-calendar-plus"></i>
                 </button>
-                <div className='text-white'><b>Agregar</b></div>
+                <div className={classValue}><b>Agregar</b></div>
             </div>
         </div>
     )
