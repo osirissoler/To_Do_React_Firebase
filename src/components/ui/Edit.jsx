@@ -25,11 +25,11 @@ const initEvent = {
 
 export const Edit = () => {
     const { active } = useSelector(state => state.lists)
-    
+
 
     const [formValues, setFormValues] = useState(active)
     const { titulo, contenido, inicio, fin, completada, id } = formValues;
-    
+
     const dispatch = useDispatch();
     const [openModal, setOpenModal] = useState(false)
 
@@ -47,7 +47,7 @@ export const Edit = () => {
     const handleCloseModal = () => {
         setOpenModal(false)
     }
-    
+
     const handleInputChange = ({ target }) => {
         setFormValues({
             ...formValues,
@@ -65,18 +65,18 @@ export const Edit = () => {
     const handleSubmitForm = (e) => {
         e.preventDefault();
 
-        if (titulo.trim() == ''){
+        if (titulo.trim() == '') {
             return Swal.fire('Error', 'El titulo es obligatorio', 'error');
         }
-        else if(contenido.trim() == ''){
+        else if (contenido.trim() == '') {
             return Swal.fire('Error', 'El contenido es obligatorio', 'error');
-        }else if(inicio.trim() == ''){
-            return Swal.fire('Error', 'La fecha de inicio es obligatorio', 'error');
-        }else{
-            dispatch( startUpdate({ titulo, contenido, inicio, fin, completada, id }))
+        } else if (inicio.trim() == '') {
+            return Swal.fire('Error', 'La fecha de inicio es obligatoria', 'error');
+        }
+        else {
+            dispatch(startUpdate({ titulo, contenido, inicio, fin, completada, id }))
             handleCloseModal()
         }
-
     }
     return (
         <>
@@ -92,7 +92,7 @@ export const Edit = () => {
                 overlayClassName="modal-fondo"
                 closeTimeoutMS={200}
                 style={customStyles}>
-            
+
                 <div className='row justify-content-between mt-1'>
                     <h4 className='px-3'>Editar entrada</h4>
                     <div className='text-right'>
@@ -113,8 +113,8 @@ export const Edit = () => {
                             placeholder="Título"
                             autoComplete="off"
                             name='titulo'
-                        value={titulo}
-                        onChange={handleInputChange}
+                            value={titulo}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="form-group">
@@ -125,15 +125,15 @@ export const Edit = () => {
                             placeholder="Contenido"
                             autoComplete="off"
                             name='contenido'
-                        value={contenido}
-                        onChange={handleInputChange}
+                            value={contenido}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div className="form-group">
-                    <label>Marcar o desmarcar como completada.</label>
+                        <label>Marcar o desmarcar como completada.</label>
                         <input type="checkbox"
                             name="completada" className="form-control"
-                           
+
                             checked={completada}
                             onChange={handleInputChangeChecked}
                         />
@@ -146,8 +146,8 @@ export const Edit = () => {
                             placeholder="Título"
                             autoComplete="off"
                             name='inicio'
-                        value={inicio}
-                        onChange={handleInputChange}
+                            value={inicio}
+                            onChange={handleInputChange}
 
                         />
                     </div>
@@ -160,8 +160,9 @@ export const Edit = () => {
                             placeholder="Título"
                             autoComplete="off"
                             name='fin'
-                        value={fin}
-                        onChange={handleInputChange}
+                            value={fin}
+                            onChange={handleInputChange}
+                            min={inicio}
                         />
                     </div>
 

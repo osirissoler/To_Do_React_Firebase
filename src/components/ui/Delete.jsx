@@ -53,18 +53,18 @@ export const Delete = () => {
                         onClick={handleCloseModal}>X</button>
                 </div>
                 <div className="text-center">
-                    <i className="fa-solid fa-trash icon_modal_delete text-danger icon_delete" ></i>
+                    <i className="fa-solid fa-trash icon_modal_delete text-info icon_delete" ></i>
                 </div>
                 <div className="text-center my-4"> <h5>Esta seguro que quiere eliminar esto.</h5></div>
 
                 {/* <div>{active}</div> */}
                 <div className="text-center mt-4">
                     <button
-                        className='btn btn-outline-primary mx-2'
-                        onClick={handleDeleteList}><i className="fa-solid fa-trash  text-danger px-2 " ></i>Ok</button>
+                        className='btn btn-success mx-2 text-white'
+                        onClick={handleDeleteList}><i className="fa-solid fa-trash  pr-2 " ></i>Ok</button>
                         <button
-                        className='btn btn-outline-primary'
-                        onClick={handleCloseModal}><i className="fa-solid fa-xmark px-2 text-danger"></i>Cancel</button>
+                        className='btn btn-danger text-white'
+                        onClick={handleCloseModal}><i className="fa-solid fa-xmark pr-2"></i>Cancel</button>
                 </div>
 
             </Modal>
